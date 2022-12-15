@@ -50,7 +50,6 @@ int main(){
     printf("Part 1: %d \n", mostCals);
     printf("Part 2: %d \n", total);
 
-
     return 0;
 }
 

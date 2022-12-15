@@ -15,6 +15,11 @@ typedef struct __attribute__((__packed__)) LIST* ptr_list;
 
 typedef void* ptr_generic;
 
+/*
+  If the linked list is sorted the data
+  var needs to have the sort value
+  as the first value.
+ */
 struct __attribute__((__packed__)) NODE{
     ptr_node pNext;
     ptr_node pPrev;
@@ -38,9 +43,5 @@ void pushDescOrd(ptr_list this_list, ptr_node new_node);
 void pushFifo(ptr_list this_list, ptr_node new_node);
 void pushLifo(ptr_list this_list, ptr_node new_node);
 void pop(ptr_list this_list, ptr_node this_node);
-
-
-
-
 
 #endif //ADVENT_OF_CODE_2022_LINKED_LIST_H
