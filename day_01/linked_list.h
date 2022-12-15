@@ -95,41 +95,17 @@ struct __attribute__((__packed__)) NODE{
 
 };
 
-/*
-    Within the data of each node the first item must be the var that is
-    used to sort the list.
-
-    Sort type key:
-    x = string
-    c = char
-    C = unsigned char
-    s = short
-    S = unsigned short
-    i = int
-    I = unsigned int
-    l = long
-    L = unsigned long
-    f = float
-    d = double
- */
 struct __attribute__((__packed__)) LIST{
     ptr_node pHead;
     ptr_node pTail;
     int count;
-    bool isQueue;
-    bool isFifo;
-    bool isSorted;
-    bool isAscended;
     unsigned int sortBySize;
-    char sortType;
+    void (*sort_func_ptr)(ptr_list this_list, ptr_node new_node);
 };
 
 void initNode(ptr_node this_node, ptr_generic data);
-void initList(ptr_list this_list, bool isQueue, bool isFifo, bool isSorted, bool isAscended, unsigned int sortBySize, char sortType);
+void initList(ptr_list this_list, unsigned int sortBySize,void (*sort_func_ptr)(ptr_list this_list, ptr_node new_node));
 void addNode(ptr_list this_list, ptr_node new_node);
-void selectSort(ptr_list this_list, ptr_node new_node);
-void selectAscended(ptr_list this_list, ptr_node new_node);
-void selectDescended(ptr_list this_list, ptr_node new_node);
 void addStringAscended(ptr_list this_list, ptr_node new_node);
 void addStringDescended(ptr_list this_list, ptr_node new_node);
 void addCharAscended(ptr_list this_list, ptr_node new_node);

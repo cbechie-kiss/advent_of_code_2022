@@ -5,7 +5,7 @@
 #include "error_handler.h"
 #include "linked_list.h"
 
-#define FILE_NAME "../day_01/challenge_1_input.txt"
+#define FILE_NAME "./challenge_1_input.txt"
 #define ACCESS_ELF_DATA ((ptr_elf)current->data)
 
 typedef struct __attribute__((__packed__)) ELF elf;
@@ -21,7 +21,7 @@ void initElf(ptr_elf this_elf, int id);
 int main(){
     FILE* fp = openFilePtr(FILE_NAME, "r");
     ptr_list elfList = (ptr_list) calloc(1, sizeof(list));
-    initList(elfList, false, false, true, false, sizeof(int), 'i');
+    initList(elfList, sizeof(int), &addIntDescended);
 
     while(!feof(fp)){
         char* str = (char*)calloc(1,30);

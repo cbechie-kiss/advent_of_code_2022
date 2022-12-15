@@ -13,113 +13,19 @@ void initNode(ptr_node this_node, ptr_generic data){
     this_node->data = data;
 }
 
-void initList(ptr_list this_list, bool isQueue, bool isFifo, bool isSorted, bool isAscended, unsigned int sortBySize, char sortType){
+void initList(ptr_list this_list, unsigned int sortBySize,void (*sort_func_ptr)(ptr_list this_list, ptr_node new_node)){
     this_list->pHead = NULL;
     this_list->pTail = NULL;
-    this_list->isQueue = isQueue;
-    this_list->isFifo = isFifo;
-    this_list->isSorted = isSorted;
-    this_list->isAscended = isAscended;
     this_list->sortBySize = sortBySize;
-    this_list->sortType = sortType;
+    this_list->sort_func_ptr = sort_func_ptr;
 }
 
 void addNode(ptr_list this_list, ptr_node new_node){
     if(this_list->pHead == NULL){
         this_list->pHead = this_list->pTail = new_node;
         this_list->count++;
-    }else if(this_list->isSorted){
-        selectSort(this_list, new_node);
     }else{
-        selectQueue(this_list, new_node);
-    }
-}
-
-void selectSort(ptr_list this_list, ptr_node new_node){
-    if(this_list->isAscended){
-        selectAscended(this_list, new_node);
-    }else{
-        selectDescended(this_list, new_node);
-    }
-}
-
-void selectAscended(ptr_list this_list, ptr_node new_node){
-    switch (this_list->sortType) {
-        case 'x':// string
-            addStringAscended(this_list, new_node);
-            break;
-        case 'c':// char
-            addCharAscended(this_list, new_node);
-            break;
-        case 'C':// unsigned char
-            addUCharAscended(this_list, new_node);
-            break;
-        case 's':// short
-            addShortAscended(this_list, new_node);
-            break;
-        case 'S':// unsigned short
-            addUShortAscended(this_list, new_node);
-            break;
-        case 'i':// int
-            addIntAscended(this_list, new_node);
-            break;
-        case 'I':// unsigned int
-            addUIntAscended(this_list, new_node);
-            break;
-        case 'l':// long
-            addLongAscended(this_list, new_node);
-            break;
-        case 'L':// unsigned long
-            addULongAscended(this_list, new_node);
-            break;
-        case 'f':// float
-            addFloatAscended(this_list, new_node);
-            break;
-        case 'd':// double
-            addDoubleAscended(this_list, new_node);
-            break;
-        default:
-            errExit("Error selectAscended\n");
-    }
-}
-
-void selectDescended(ptr_list this_list, ptr_node new_node){
-    switch (this_list->sortType) {
-        case 'x':// string
-            addStringDescended(this_list, new_node);
-            break;
-        case 'c':// char
-            addCharDescended(this_list, new_node);
-            break;
-        case 'C':// unsigned char
-            addUCharDescended(this_list, new_node);
-            break;
-        case 's':// short
-            addShortDescended(this_list, new_node);
-            break;
-        case 'S':// unsigned short
-            addUShortDescended(this_list, new_node);
-            break;
-        case 'i':// int
-            addIntDescended(this_list, new_node);
-            break;
-        case 'I':// unsigned int
-            addUIntDescended(this_list, new_node);
-            break;
-        case 'l':// long
-            addLongDescended(this_list, new_node);
-            break;
-        case 'L':// unsigned long
-            addULongDescended(this_list, new_node);
-            break;
-        case 'f':// float
-            addFloatDescended(this_list, new_node);
-            break;
-        case 'd':// double
-            addDoubleDescended(this_list, new_node);
-            break;
-        default:
-            errExit("Error selectAscended\n");
+        this_list->sort_func_ptr(this_list, new_node);
     }
 }
 
@@ -371,14 +277,6 @@ void addDoubleDescended(ptr_list this_list, ptr_node new_node){
     ptr_node current = this_list->pTail;
     double c_data; // current double
     SORT_NUMBER_DESCENDED(c_data, new_data)
-}
-
-void selectQueue(ptr_list this_list, ptr_node new_node){
-    if(this_list->isFifo){
-        addFifo(this_list, new_node);
-    }else{
-        addLifo(this_list, new_node);
-    }
 }
 
 void addFifo(ptr_list this_list, ptr_node new_node){
