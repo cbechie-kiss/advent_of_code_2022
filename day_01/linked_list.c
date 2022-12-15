@@ -31,6 +31,7 @@ void addNode(ptr_list this_list, ptr_node new_node){
 
 void addStringAscended(ptr_list this_list, ptr_node new_node){
     // Add a string to the list from smallest to largest
+    //TODO finish this
     char* new_string = (char*)calloc(1, this_list->sortBySize);
 
     memcpy(&new_string, new_node->data, this_list->sortBySize);
@@ -56,6 +57,7 @@ void addStringAscended(ptr_list this_list, ptr_node new_node){
 
 void addStringDescended(ptr_list this_list, ptr_node new_node){
     // Add a string to the list from largest to smallest
+    //TODO finish this
     char* new_string = (char*)calloc(1, this_list->sortBySize);
 
     memcpy(&new_string, new_node->data, this_list->sortBySize);
