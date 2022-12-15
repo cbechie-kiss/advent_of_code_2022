@@ -21,7 +21,7 @@ void initElf(ptr_elf this_elf, int id);
 int main(){
     FILE* fp = openFilePtr(FILE_NAME, "r");
     ptr_list elfList = (ptr_list) calloc(1, sizeof(list));
-    initList(elfList, sizeof(int), &addIntDescended);
+    initList(elfList, sizeof(int), &sortDescended);
 
     while(!feof(fp)){
         char* str = (char*)calloc(1,30);
