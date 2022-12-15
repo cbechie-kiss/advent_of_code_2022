@@ -6,6 +6,7 @@
 #include "linked_list.h"
 
 #define FILE_NAME "../day_01/challenge_1_input.txt"
+#define ACCESS_ELF_DATA ((ptr_elf)current->data)
 
 typedef struct __attribute__((__packed__)) ELF elf;
 typedef struct __attribute__((__packed__)) ELF* ptr_elf;
@@ -40,11 +41,18 @@ int main(){
     }
 
     fclose(fp);
+
     ptr_node current = elfList->pHead;
-    while(current != NULL){
-        printf("%d \n", ((ptr_elf)current->data)->totalCal);
+    int mostCals = ACCESS_ELF_DATA->totalCal;
+    int total = 0;
+    for(int i = 0; i < 3; i++){
+        total += ACCESS_ELF_DATA->totalCal;
         current = current->pNext;
     }
+    printf("Part 1: %d \n", mostCals);
+    printf("Part 2: %d \n", total);
+
+
     return 0;
 }
 
