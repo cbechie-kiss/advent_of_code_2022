@@ -1,13 +1,11 @@
-OBJECTS=error_handler.o  file_handler.o linked_list.o
-CFLAGS=-c -Wall -Werror -fPIC
+LIB_NAME=libadvent.dylib
+CFILES=error_handler.c file_handler.c linked_list.c
 CC=clang
 
-target: $(OBJECTS)
-	$(CC) -shared -o libadvent.dylib $(OBJECTS)
 
-%.o: %.c
-	$(CC) $(CFLAGS) $<
+all: $(OBJECTS)
+	$(CC) -dynamiclib $(CFILES)  -o $(LIB_NAME)
 
 clean:
 	rm *.o
-	rm libadvent.so
+	rm $(LIB_NAME)
