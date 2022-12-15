@@ -32,12 +32,12 @@ struct __attribute__((__packed__)) LIST{
 
 void initNode(ptr_node this_node, ptr_generic data);
 void initList(ptr_list this_list, unsigned int sortBySize,void (*sort_func_ptr)(ptr_list this_list, ptr_node new_node));
-void addNode(ptr_list this_list, ptr_node new_node);
-void sortAscended(ptr_list this_list, ptr_node new_node);
-void sortDescended(ptr_list this_list, ptr_node new_node);
-void addFifo(ptr_list this_list, ptr_node new_node);
-void addLifo(ptr_list this_list, ptr_node new_node);
-void removeNode(ptr_list this_list, ptr_node this_node);
+void push(ptr_list this_list, ptr_node new_node);
+void pushAsceOrd(ptr_list this_list, ptr_node new_node);
+void pushDescOrd(ptr_list this_list, ptr_node new_node);
+void pushFifo(ptr_list this_list, ptr_node new_node);
+void pushLifo(ptr_list this_list, ptr_node new_node);
+void pop(ptr_list this_list, ptr_node this_node);
 
 
 

@@ -20,7 +20,7 @@ void initList(ptr_list this_list, unsigned int sortBySize,void (*sort_func_ptr)(
     this_list->sort_func_ptr = sort_func_ptr;
 }
 
-void addNode(ptr_list this_list, ptr_node new_node){
+void push(ptr_list this_list, ptr_node new_node){
     if(this_list->pHead == NULL){
         this_list->pHead = this_list->pTail = new_node;
         this_list->count++;
@@ -29,7 +29,7 @@ void addNode(ptr_list this_list, ptr_node new_node){
     }
 }
 
-void sortAscended(ptr_list this_list, ptr_node new_node){
+void pushAsceOrd(ptr_list this_list, ptr_node new_node){
 
     ptr_node current = this_list->pHead;
     bool isInserted = false;
@@ -64,7 +64,7 @@ void sortAscended(ptr_list this_list, ptr_node new_node){
     }
 }
 
-void sortDescended(ptr_list this_list, ptr_node new_node){
+void pushDescOrd(ptr_list this_list, ptr_node new_node){
 
     ptr_node current = this_list->pTail;
     bool isInserted = false;
@@ -99,19 +99,19 @@ void sortDescended(ptr_list this_list, ptr_node new_node){
     }
 }
 
-void addFifo(ptr_list this_list, ptr_node new_node){
+void pushFifo(ptr_list this_list, ptr_node new_node){
     this_list->pTail->pNext = new_node;
     new_node->pPrev = this_list->pTail;
     this_list->pTail = new_node;
 }
 
-void addLifo(ptr_list this_list, ptr_node new_node){
+void pushLifo(ptr_list this_list, ptr_node new_node){
     this_list->pHead->pPrev = new_node;
     new_node->pNext = this_list->pHead;
     this_list->pHead = new_node;
 }
 
-void removeNode(ptr_list this_list, ptr_node this_node){
+void pop(ptr_list this_list, ptr_node this_node){
     if(this_node == this_list->pTail){
         this_list->pTail = this_node->pPrev;
         this_node->pPrev = NULL;
