@@ -20,8 +20,7 @@ void initElf(ptr_elf this_elf, int id);
 int main(){
     FILE* fp = openFilePtr(FILE_NAME, "r");
     ptr_list elfList = (ptr_list) calloc(1, sizeof(list));
-    initList(elfList, false, false, true, true, sizeof(int), 'i');
-
+    initList(elfList, false, false, true, false, sizeof(int), 'i');
 
     while(!feof(fp)){
         char* str = (char*)calloc(1,30);
@@ -43,10 +42,9 @@ int main(){
     fclose(fp);
     ptr_node current = elfList->pHead;
     while(current != NULL){
-        printf("%d: %d \n", ((ptr_elf)current->data)->id,  ((ptr_elf)current->data)->totalCal);
+        printf("%d \n", ((ptr_elf)current->data)->totalCal);
         current = current->pNext;
     }
-
     return 0;
 }
 
