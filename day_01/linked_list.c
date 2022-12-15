@@ -180,7 +180,7 @@ void addCharAscended(ptr_list this_list, ptr_node new_node){
     bool isInserted = false;
     ptr_node current = this_list->pHead;
     char c_data; // current char
-    //SORT_NUMBER_ASCENDED(c_data, new_data)
+    SORT_NUMBER_ASCENDED(c_data, new_data)
 }
 
 void addCharDescended(ptr_list this_list, ptr_node new_node){
@@ -188,7 +188,7 @@ void addCharDescended(ptr_list this_list, ptr_node new_node){
     char new_data;
     memcpy(&new_data, new_node->data, this_list->sortBySize);
     bool isInserted = false;
-    ptr_node current = this_list->pHead;
+    ptr_node current = this_list->pTail;
     char c_data; // current char
     SORT_NUMBER_DESCENDED(c_data, new_data)
 }
@@ -208,7 +208,7 @@ void addUCharDescended(ptr_list this_list, ptr_node new_node){
     unsigned char new_data;
     memcpy(&new_data, new_node->data, this_list->sortBySize);
     bool isInserted = false;
-    ptr_node current = this_list->pHead;
+    ptr_node current = this_list->pTail;
     unsigned char c_data; // current unsigned char
     SORT_NUMBER_DESCENDED(c_data, new_data)
 }
@@ -228,7 +228,7 @@ void addShortDescended(ptr_list this_list, ptr_node new_node){
     short new_data;
     memcpy(&new_data, new_node->data, this_list->sortBySize);
     bool isInserted = false;
-    ptr_node current = this_list->pHead;
+    ptr_node current = this_list->pTail;
     short c_data; // current short
     SORT_NUMBER_DESCENDED(c_data, new_data)
 }
@@ -248,7 +248,7 @@ void addUShortDescended(ptr_list this_list, ptr_node new_node){
     unsigned short new_data;
     memcpy(&new_data, new_node->data, this_list->sortBySize);
     bool isInserted = false;
-    ptr_node current = this_list->pHead;
+    ptr_node current = this_list->pTail;
     unsigned short c_data; // current unsigned short
     SORT_NUMBER_DESCENDED(c_data, new_data)
 }
@@ -268,7 +268,7 @@ void addIntDescended(ptr_list this_list, ptr_node new_node){
     int new_data;
     memcpy(&new_data, new_node->data, this_list->sortBySize);
     bool isInserted = false;
-    ptr_node current = this_list->pHead;
+    ptr_node current = this_list->pTail;
     int c_data; // current int
     SORT_NUMBER_DESCENDED(c_data, new_data)
 }
@@ -288,7 +288,7 @@ void addUIntDescended(ptr_list this_list, ptr_node new_node){
     unsigned int new_data;
     memcpy(&new_data, new_node->data, this_list->sortBySize);
     bool isInserted = false;
-    ptr_node current = this_list->pHead;
+    ptr_node current = this_list->pTail;
     unsigned int c_data; // current unsigned int
     SORT_NUMBER_DESCENDED(c_data, new_data)
 }
@@ -308,7 +308,7 @@ void addLongDescended(ptr_list this_list, ptr_node new_node){
     long new_data;
     memcpy(&new_data, new_node->data, this_list->sortBySize);
     bool isInserted = false;
-    ptr_node current = this_list->pHead;
+    ptr_node current = this_list->pTail;
     long c_data; // current long
     SORT_NUMBER_DESCENDED(c_data, new_data)
 }
@@ -328,7 +328,7 @@ void addULongDescended(ptr_list this_list, ptr_node new_node){
     unsigned long new_data;
     memcpy(&new_data, new_node->data, this_list->sortBySize);
     bool isInserted = false;
-    ptr_node current = this_list->pHead;
+    ptr_node current = this_list->pTail;
     unsigned long c_data; // current unsigned long
     SORT_NUMBER_DESCENDED(c_data, new_data)
 }
@@ -348,7 +348,7 @@ void addFloatDescended(ptr_list this_list, ptr_node new_node){
     float new_data;
     memcpy(&new_data, new_node->data, this_list->sortBySize);
     bool isInserted = false;
-    ptr_node current = this_list->pHead;
+    ptr_node current = this_list->pTail;
     float c_data; // current float
     SORT_NUMBER_DESCENDED(c_data, new_data)
 }
@@ -368,7 +368,7 @@ void addDoubleDescended(ptr_list this_list, ptr_node new_node){
     double new_data;
     memcpy(&new_data, new_node->data, this_list->sortBySize);
     bool isInserted = false;
-    ptr_node current = this_list->pHead;
+    ptr_node current = this_list->pTail;
     double c_data; // current double
     SORT_NUMBER_DESCENDED(c_data, new_data)
 }

@@ -8,15 +8,17 @@
 #include <stdbool.h>
 
 #define ADD_NODE_BEFORE(c_data, new_data) \
+new_node->pPrev = current->pPrev; \
+if(current->pPrev != NULL){                       \
+    current->pPrev->pNext = new_node; \
+}\
 new_node->pNext = current;\
-new_node->pPrev = current->pPrev;\
-current->pPrev = new_node;\
-if(current == this_list->pHead){\
+current->pPrev= new_node;\
+if(current == this_list->pHead){  \
     this_list->pHead = new_node;\
-}                       \
+}\
 this_list->count++;\
 isInserted = true;      \
-printf("Switched: %d & %d \n", c_data, new_data);\
 break;
 
 
@@ -28,10 +30,9 @@ if(current->pNext != NULL){                       \
 new_node->pPrev = current;\
 current->pNext= new_node;\
 if(current == this_list->pTail){  \
-    printf("NEW TAILS %p : %p  %d : %d \n", current, this_list->pTail, new_data, c_data);                   \
     this_list->pTail = new_node;\
 }\
-isInserted = true;     \
+isInserted = true;\
 this_list->count++;\
 break;
 
@@ -40,8 +41,7 @@ if(isInserted == false){         \
     this_list->pTail->pNext = new_node;\
     new_node->pPrev = this_list->pTail;\
     this_list->pTail = new_node; \
-    this_list->count++;          \
-printf("NEW TAILS %d : %d \n", new_data, c_data); \
+    this_list->count++; \
 }
 
 #define REPLACE_HEAD_DURING_SORT(c_data, new_data) \
@@ -53,9 +53,8 @@ if(isInserted == false){         \
 }
 
 #define CHECK_IS_BEFORE(c_data, new_data) \
-if(new_data >= c_data){                   \
+if(new_data <= c_data){                   \
     ADD_NODE_BEFORE(c_data, new_data)                       \
-    \
 }else{\
     current = current->pNext;\
 }
@@ -64,7 +63,7 @@ if(new_data >= c_data){                   \
 if(new_data <= c_data){                   \
 ADD_NODE_AFTER(c_data, new_data) \
 }else{                                    \
-current = current->pNext;\
+current = current->pPrev;\
 }
 
 #define SORT_NUMBER_ASCENDED(c_data, new_data)  \
@@ -72,14 +71,14 @@ while(current != NULL){\
     memcpy(&c_data, current->data, this_list->sortBySize);\
     CHECK_IS_BEFORE(c_data, new_data)\
 }\
-REPLACE_HEAD_DURING_SORT(c_data, new_data)
+REPLACE_TAIL_DURING_SORT(c_data, new_data)
 
 #define SORT_NUMBER_DESCENDED(c_data, new_data) \
 while(current != NULL){ \
 memcpy(&c_data, current->data, this_list->sortBySize);\
 CHECK_IS_AFTER(c_data, new_data)\
 }\
-REPLACE_TAIL_DURING_SORT(c_data, new_data)
+REPLACE_HEAD_DURING_SORT(c_data, new_data)
 
 typedef struct __attribute__((__packed__)) NODE node;
 typedef struct __attribute__((__packed__)) NODE* ptr_node;
