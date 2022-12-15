@@ -30,9 +30,8 @@ int main(){
 
         while(str[0] != '\n' && !feof(fp)) {
             fgets(str, sizeof(str), fp);
-            int *calories = calloc(1, sizeof(int));
-            *calories = atoi(str);
-            this_elf->totalCal += *calories;
+            int calories = atoi(str);
+            this_elf->totalCal += calories;
         }
 
         ptr_node elf_node = (ptr_node) calloc(1, sizeof(node));
@@ -41,7 +40,6 @@ int main(){
     }
 
     fclose(fp);
-
     ptr_node current = elfList->pHead;
     int mostCals = ACCESS_ELF_DATA->totalCal;
     int total = 0;
