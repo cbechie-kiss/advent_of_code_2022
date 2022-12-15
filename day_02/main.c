@@ -1,8 +1,10 @@
 //
 // Created by Carl  on 12/14/22.
 //
-
 #include <stdio.h>
+#include "../advent_lib/linked_list.h"
+#include "../advent_lib/error_handler.h"
+#include "../advent_lib/file_handler.h"
 
 int main(){
  // (1 for Rock, 2 for Paper, and 3 for Scissors)

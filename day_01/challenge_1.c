@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "file_handler.h"
-#include "error_handler.h"
-#include "linked_list.h"
+#include "../advent_lib/file_handler.h"
+#include "../advent_lib/error_handler.h"
+#include "../advent_lib/linked_list.h"
 
 #define FILE_NAME "./challenge_1_input.txt"
 #define ACCESS_ELF_DATA ((ptr_elf)current->data)

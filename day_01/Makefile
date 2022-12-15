@@ -1,13 +1,9 @@
-NORM_LIBS=-lpthread
-OBJECTS= error_handler.o  file_handler.o linked_list.o
+LIBS=-ladvent
 CFLAGS=-g -Wall
-CC=gcc
+CC=clang
 
 all: $(OBJECTS)
-	$(CC) $(CFLAGS) -o chal_1 challenge_1.c $(OBJECTS) $(NORM_LIBS)
-
-%.o: %.c
-	$(CC) -c -o $@ $<
+	$(CC) $(CFLAGS) -o chal_1 challenge_1.c -I /usr/local/lib $(LIBS)
 
 clean:
 	rm *.o
